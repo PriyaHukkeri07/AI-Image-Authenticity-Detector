@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TRUE VISION | AI Image Authenticity Detector</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="grid-background"></div>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    <span>◈</span>
+                </div>
+
+                <div class="brand-name">
+                    TRUE<span>VISION</span>
+                </div>
+
+            </div>
+
+            <div class="status-pill">
+                <span class="status-dot"></span>
+                AI ANALYSIS SYSTEM
+            </div>
+
+        </header>
+
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="eyebrow">
+                <span>✦</span>
+                AI IMAGE AUTHENTICITY DETECTOR
+            </div>
+
+            <h1>
+                See Beyond<br>
+                <span>What You See.</span>
+            </h1>
+
+            <p class="hero-description">
+                Upload an image and let TRUE VISION analyze
+                its visual patterns to determine whether it
+                appears authentic or AI-generated.
+            </p>
+
+            <div class="hero-stats">
+
+                <div class="mini-stat">
+                    <strong>01</strong>
+                    <span>Upload</span>
+                </div>
+
+                <div class="stat-line"></div>
+
+                <div class="mini-stat">
+                    <strong>02</strong>
+                    <span>Analyze</span>
+                </div>
+
+                <div class="stat-line"></div>
+
+                <div class="mini-stat">
+                    <strong>03</strong>
+                    <span>Discover</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAIN -->
+        <main class="main-card">
+
+            <div class="card-top">
+
+                <div>
+
+                    <div class="section-label">
+                        <span class="pulse"></span>
+                        ANALYSIS TERMINAL
+                    </div>
+
+                    <h2>
+                        Analyze an Image
+                    </h2>
+
+                    <p>
+                        Upload a photo to begin your authenticity analysis.
+                    </p>
+
+                </div>
+
+                <div class="scan-symbol">
+                    ⌁
+                </div>
+
+            </div>
+
+
+            <!-- UPLOAD -->
+            <div
+                class="upload-area"
+                id="uploadArea"
+            >
+
+                <div class="upload-orbit">
+
+                    <div class="upload-icon">
+                        ↑
+                    </div>
+
+                </div>
+
+                <h3 id="uploadTitle">
+                    Drop your image here
+                </h3>
+
+                <p id="uploadSubtitle">
+                    Drag & drop or browse your device
+                </p>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                >
+
+                <label
+                    for="imageInput"
+                    class="upload-btn"
+                >
+                    <span>Choose Image</span>
+                    <span class="btn-arrow">→</span>
+                </label>
+
+                <div class="file-types">
+                    JPG
+                    <span>•</span>
+                    JPEG
+                    <span>•</span>
+                    PNG
+                    <span>•</span>
+                    WEBP
+                </div>
+
+            </div>
+
+
+            <!-- FILE INFO -->
+            <div
+                id="fileInfo"
+                class="file-info"
+                style="display:none;"
+            >
+
+                <div class="file-preview-mini">
+
+                    <img
+                        id="miniPreview"
+                        src=""
+                        alt="Selected image"
+                    >
+
+                </div>
+
+                <div class="file-details">
+
+                    <div class="file-status">
+                        <span class="status-check">✓</span>
+                        Image ready
+                    </div>
+
+                    <div
+                        id="fileName"
+                        class="file-name"
+                    >
+                        image.jpg
+                    </div>
+
+                    <div
+                        id="fileSize"
+                        class="file-size"
+                    >
+                        0 KB
+                    </div>
+
+                </div>
+
+                <button
+                    id="removeImageBtn"
+                    class="remove-image-btn"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- PREVIEW -->
+            <div id="preview-container">
+
+                <img
+                    id="preview"
+                    src=""
+                    alt="Uploaded Image Preview"
+                >
+
+            </div>
+
+
+            <!-- ANALYZE -->
+            <button
+                id="detectBtn"
+                type="button"
+            >
+
+                <span class="button-spark">✦</span>
+
+                <span>
+                    Analyze Image
+                </span>
+
+                <span class="button-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+            <!-- RESULT -->
+            <div
+                id="result"
+                class="result-box"
+            >
+
+                <div class="result-header">
+
+                    <div class="result-icon">
+                        ◉
+                    </div>
+
+                    <div id="resultTitle">
+                        Your analysis result will appear here
+                    </div>
+
+                </div>
+
+
+                <!-- RESULT DASHBOARD -->
+                <div
+                    id="resultDashboard"
+                    class="result-dashboard"
+                    style="display:none;"
+                >
+
+                    <div class="result-main">
+
+                        <div class="result-status">
+
+                            <span class="result-status-dot"></span>
+
+                            ANALYSIS COMPLETE
+
+                        </div>
+
+                        <h3 id="resultVerdict">
+                            AI Generated
+                        </h3>
+
+                        <p id="resultDescription">
+                            The image shows visual patterns that
+                            are consistent with AI-generated content.
+                        </p>
+
+                    </div>
+
+
+                    <!-- CONFIDENCE -->
+                    <div class="confidence-dashboard">
+
+                        <div class="confidence-circle">
+
+                            <div class="confidence-inner">
+
+                                <strong id="dashboardConfidence">
+                                    94%
+                                </strong>
+
+                                <span>
+                                    CONFIDENCE
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- QUICK METRICS -->
+                    <div class="analysis-metrics">
+
+                        <div class="metric">
+
+                            <div class="metric-top">
+                                <span>Visual Patterns</span>
+                                <strong>High</strong>
+                            </div>
+
+                            <div class="metric-line">
+                                <div class="metric-fill high"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-top">
+                                <span>Texture Analysis</span>
+                                <strong>High</strong>
+                            </div>
+
+                            <div class="metric-line">
+                                <div class="metric-fill high"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-top">
+                                <span>Edge Consistency</span>
+                                <strong>Medium</strong>
+                            </div>
+
+                            <div class="metric-line">
+                                <div class="metric-fill medium"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-top">
+                                <span>Image Noise</span>
+                                <strong>Low</strong>
+                            </div>
+
+                            <div class="metric-line">
+                                <div class="metric-fill low"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- NEW: TECHNICAL ANALYSIS -->
+                    <div
+                        id="technicalAnalysis"
+                        class="technical-analysis"
+                    >
+
+                        <div class="technical-heading">
+
+                            <div>
+
+                                <div class="section-label">
+                                    <span class="pulse"></span>
+                                    TECHNICAL ANALYSIS
+                                </div>
+
+                                <h3>
+                                    Visual Signal Breakdown
+                                </h3>
+
+                            </div>
+
+                            <span class="analysis-live">
+                                LIVE
+                            </span>
+
+                        </div>
+
+
+                        <div class="signal-grid">
+
+
+                            <!-- PIXEL -->
+                            <div class="signal-card">
+
+                                <div class="signal-icon">
+                                    ▦
+                                </div>
+
+                                <div class="signal-content">
+
+                                    <div class="signal-title">
+                                        <span>Pixel Patterns</span>
+                                        <strong>88%</strong>
+                                    </div>
+
+                                    <div class="signal-bar">
+                                        <div
+                                            class="signal-fill"
+                                            data-width="88"
+                                        ></div>
+                                    </div>
+
+                                    <p>
+                                        Pattern consistency detected
+                                        across image regions.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- TEXTURE -->
+                            <div class="signal-card">
+
+                                <div class="signal-icon">
+                                    ◌
+                                </div>
+
+                                <div class="signal-content">
+
+                                    <div class="signal-title">
+                                        <span>Texture</span>
+                                        <strong>91%</strong>
+                                    </div>
+
+                                    <div class="signal-bar">
+                                        <div
+                                            class="signal-fill"
+                                            data-width="91"
+                                        ></div>
+                                    </div>
+
+                                    <p>
+                                        Texture characteristics show
+                                        notable synthetic signals.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- EDGES -->
+                            <div class="signal-card">
+
+                                <div class="signal-icon">
+                                    ⌁
+                                </div>
+
+                                <div class="signal-content">
+
+                                    <div class="signal-title">
+                                        <span>Edge Analysis</span>
+                                        <strong>67%</strong>
+                                    </div>
+
+                                    <div class="signal-bar">
+                                        <div
+                                            class="signal-fill"
+                                            data-width="67"
+                                        ></div>
+                                    </div>
+
+                                    <p>
+                                        Edge transitions analyzed
+                                        across major objects.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- NOISE -->
+                            <div class="signal-card">
+
+                                <div class="signal-icon">
+                                    ≋
+                                </div>
+
+                                <div class="signal-content">
+
+                                    <div class="signal-title">
+                                        <span>Noise Pattern</span>
+                                        <strong>39%</strong>
+                                    </div>
+
+                                    <div class="signal-bar">
+                                        <div
+                                            class="signal-fill"
+                                            data-width="39"
+                                        ></div>
+                                    </div>
+
+                                    <p>
+                                        Image noise distribution
+                                        appears relatively uniform.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- LIGHTING -->
+                            <div class="signal-card">
+
+                                <div class="signal-icon">
+                                    ◐
+                                </div>
+
+                                <div class="signal-content">
+
+                                    <div class="signal-title">
+                                        <span>Lighting</span>
+                                        <strong>74%</strong>
+                                    </div>
+
+                                    <div class="signal-bar">
+                                        <div
+                                            class="signal-fill"
+                                            data-width="74"
+                                        ></div>
+                                    </div>
+
+                                    <p>
+                                        Lighting relationships analyzed
+                                        across visible regions.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- FREQUENCY -->
+                            <div class="signal-card">
+
+                                <div class="signal-icon">
+                                    ∿
+                                </div>
+
+                                <div class="signal-content">
+
+                                    <div class="signal-title">
+                                        <span>Frequency Signals</span>
+                                        <strong>82%</strong>
+                                    </div>
+
+                                    <div class="signal-bar">
+                                        <div
+                                            class="signal-fill"
+                                            data-width="82"
+                                        ></div>
+                                    </div>
+
+                                    <p>
+                                        Frequency-level patterns
+                                        analyzed for anomalies.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- WHY RESULT -->
+                    <div class="why-result">
+
+                        <div class="why-icon">
+                            ✦
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Why this result?
+                            </h4>
+
+                            <p>
+                                TRUE VISION compares visual
+                                characteristics such as textures,
+                                edges, noise patterns and other
+                                image-level signals to estimate
+                                authenticity.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TAGS -->
+                    <div class="analysis-tags">
+
+                        <span>
+                            ✓ PATTERN ANALYSIS
+                        </span>
+
+                        <span>
+                            ✓ TEXTURE SCAN
+                        </span>
+
+                        <span>
+                            ✓ NOISE CHECK
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OLD FALLBACK -->
+                <div
+                    id="confidenceSection"
+                    style="display:none;"
+                >
+
+                    <div class="confidence-top">
+
+                        <p class="confidence-text">
+                            AI Confidence
+                        </p>
+
+                        <span id="confidence">
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="confidence-bar">
+
+                        <div id="confidenceFill"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- HOW IT WORKS -->
+        <section class="how-section">
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    HOW IT WORKS
+                </div>
+
+                <h2>
+                    From image to insight.
+                </h2>
+
+                <p>
+                    A simple three-step workflow designed
+                    to make image authenticity analysis easy
+                    to understand.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="step-top">
+
+                        <span>01</span>
+
+                        <div class="step-icon">
+                            ↑
+                        </div>
+
+                    </div>
+
+                    <h3>
+                        Upload
+                    </h3>
+
+                    <p>
+                        Select an image from your device
+                        or drag it directly into the
+                        analysis area.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-top">
+
+                        <span>02</span>
+
+                        <div class="step-icon">
+                            ⌁
+                        </div>
+
+                    </div>
+
+                    <h3>
+                        Analyze
+                    </h3>
+
+                    <p>
+                        TRUE VISION examines visual
+                        patterns and image characteristics.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-top">
+
+                        <span>03</span>
+
+                        <div class="step-icon">
+                            ◈
+                        </div>
+
+                    </div>
+
+                    <h3>
+                        Discover
+                    </h3>
+
+                    <p>
+                        Receive an authenticity prediction
+                        together with a confidence value.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <div class="footer-line"></div>
+
+            <div class="footer-content">
+
+                <span>TRUE VISION</span>
+
+                <span>AI IMAGE AUTHENTICITY DETECTOR</span>
+
+                <span>MINI PROJECT</span>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
